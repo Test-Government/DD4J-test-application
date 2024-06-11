@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+
+  dozzle: # Web-based UI for browsing container logs
+    image: amir20/dozzle:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      default:
+        aliases:
+          - dozzle.localhost
+    ports:
+      - '9080:8080'
+    restart: unless-stopped
+
+  dd4j-test-application:
+    image: dd4j-test-application:latest
+    environment:
+      - validation.enabled=true
+      - validation.configuration.mode=TEST
+      - validation.configuration.implementations.aiaSourceFactory=ee.test_gov.dd4j.app.common.factory.InMemoryCachingAiaSourceFactory
+      - validation.configuration.thread-executor.core-pool-size=10
+      - validation.configuration.thread-executor.maximum-pool-size=100
+      - validation.configuration.thread-executor.keep-alive-time=PT5M
+    networks:
+      default:
+        aliases:
+          - dd4j.test.localhost
+    ports:
+      - '8080:8080'
