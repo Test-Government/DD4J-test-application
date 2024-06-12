@@ -18,19 +18,25 @@ The functionality can be enabled via the following configuration parameter:
 
 ### Available endpoints
 
-The application provides the following endpoint for validation:
+The application provides the following endpoints for validation:
 
 ```
-POST /validate
+POST /validate/bin
+POST /validate/json
 ```
 
-The validation endpoint consumes JSON requests with the following parameters:
+1. The first validation endpoint `/validate/bin` consumes a container in raw binary format.
+   * Requests to this endpoint must use `application/octet-stream` content type header.
 
-| Request parameter | Required | Description | Example |
-| ----------------- | -------- | ----------- | ------- |
-| `container` | YES | The container to validate in base64 encoded format. | `Q29udGFpbmVyIGJ5dGVzIGVuY29kZWQgaW4gYmFzZTY0IGZvcm1hdC4=` |
+2. The second validation endpoint `/validate/json` consumes JSON requests.
+   * Requests to this endpoint must use `application/json` content type header.
+   * The request body has the following form:
 
-The validation endpoint produces JSON responses with the following parameters:
+     | Request parameter | Required | Description | Example |
+     | ----------------- | -------- | ----------- | ------- |
+     | `container` | YES | The container to validate in base64 encoded format. | `Q29udGFpbmVyIGJ5dGVzIGVuY29kZWQgaW4gYmFzZTY0IGZvcm1hdC4=` |
+
+All validation endpoints produce JSON responses with the following parameters:
 
 | Response parameter | Always present | Description | Example |
 | ------------------ | -------------- | ----------- | ------- |

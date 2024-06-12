@@ -12,4 +12,7 @@ public final class CommonConstants {
     public static final String STRING_ENABLED = "enabled";
     public static final String STRING_TRUE = "true";
 
+    public static final String PATH_BIN = "/bin";
+    public static final String PATH_JSON = "/json";
+
 }
