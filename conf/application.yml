@@ -1,0 +1,10 @@
+validation:
+  enabled: true
+  configuration:
+    mode: TEST
+    implementations:
+      aiaSourceFactory: ee.test_gov.dd4j.app.common.factory.InMemoryCachingAiaSourceFactory
+    thread-executor:
+      core-pool-size: 10
+      maximum-pool-size: 100
+      keep-alive-time: PT5M

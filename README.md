@@ -74,7 +74,24 @@ For example, `aiaSourceFactory` implementation can be configured as follows:
 `validation.configuration.implementations.aiaSourceFactory=ee.test_gov.dd4j.app.common.factory.InMemoryCachingAiaSourceFactory`.
 <br>**NB:** the specified implementation must have a constructor that takes one `org.digidoc4j.Configuration` argument!
 
+## Running the application on command line
+
+This example runs the application using the configuration specified in [conf/application.yml](conf/application.yml).
+
+1. Build the application JAR
+   ```shell
+   ./mvn clean package -DskipTests
+   ```
+2. Start the application
+   ```shell
+   java -jar target/dd4j-test-application-0.1.0-SNAPSHOT.jar --spring.config.location=file:conf/application.yml
+   ```
+
+The application is accessible on http://localhost:8080 .
+
 ## Running the application in Docker
+
+This example runs the application using the configuration specified in [docker-compose.yml](docker-compose.yml).
 
 1. Build the Docker image
    ```shell
